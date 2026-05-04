@@ -10,10 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 public class ApiClient {
 
-    // URL base corregida apuntando a tu backend en Render
     private static final String BASE_URL = "https://api-peliculas-0ryj.onrender.com/";
 
-    // Configuración del cliente OkHttp con tiempos de espera adecuados para servicios en la nube
     private static final OkHttpClient client = new OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
@@ -127,7 +125,6 @@ public class ApiClient {
     // MÉTODOS DE UTILIDAD
     // ==========================================
 
-    // Centraliza la validación de errores HTTP para no repetir código
     private static void validarRespuesta(Response response) throws Exception {
         if (!response.isSuccessful()) {
             String errorBody = response.body() != null ? response.body().string() : "Error desconocido";

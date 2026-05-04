@@ -17,7 +17,6 @@ public class PeliculasActivity extends AppCompatActivity {
     EditText txtId, txtTitulo, txtDirector, txtAnio, txtGenero, txtDuracion, txtCalificacion;
     Button btnCrear, btnBuscar, btnActualizar, btnEliminar, btnListarPeliculas, btnVolverMenuPeliculas;
     TextView lblResultadosPeliculas;
-    // Hilo secundario para las peticiones de red
     ExecutorService executor = Executors.newSingleThreadExecutor();
 
     @Override
@@ -25,7 +24,6 @@ public class PeliculasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peliculas);
 
-        // Enlaces UI
         txtId = findViewById(R.id.txtId);
         txtTitulo = findViewById(R.id.txtTitulo);
         txtDirector = findViewById(R.id.txtDirector);
@@ -44,7 +42,6 @@ public class PeliculasActivity extends AppCompatActivity {
         btnVolverMenuPeliculas = findViewById(R.id.btnVolverMenuPeliculas);
 
 
-        // Asignación de eventos
         btnCrear.setOnClickListener(v -> crearPelicula());
         btnBuscar.setOnClickListener(v -> buscarPelicula());
         btnActualizar.setOnClickListener(v -> actualizarPelicula());
@@ -55,13 +52,10 @@ public class PeliculasActivity extends AppCompatActivity {
     }
 
     private void listarPeliculas() {
-        // Mostramos un texto de carga
         lblResultadosPeliculas.setText("Cargando catálogo desde el API...");
 
         executor.execute(() -> {
             try {
-                // Llamamos a tu ApiClient que ya tiene el método getPeliculas() configurado
-                // Asegúrate de importar java.util.List en la parte superior si no lo está
                 List<Pelicula> peliculas = ApiClient.getPeliculas();
 
                 runOnUiThread(() -> {
@@ -70,7 +64,6 @@ public class PeliculasActivity extends AppCompatActivity {
                         return;
                     }
 
-                    // Usamos StringBuilder para ir uniendo el texto de cada película
                     StringBuilder sb = new StringBuilder();
                     for (Pelicula p : peliculas) {
                         sb.append("ID: ").append(p.id).append(" | ").append(p.titulo).append("\n");
@@ -80,7 +73,6 @@ public class PeliculasActivity extends AppCompatActivity {
                         sb.append("---------------------------------------\n");
                     }
 
-                    // Mostramos toda la información formateada en la pantalla
                     lblResultadosPeliculas.setText(sb.toString());
                 });
             } catch (Exception e) {
@@ -92,14 +84,11 @@ public class PeliculasActivity extends AppCompatActivity {
     private void crearPelicula() {
         try {
             Pelicula p = new Pelicula();
-            // Al ser Integer, el id empieza en null y el API lo ignora perfectamente
             p.titulo = txtTitulo.getText().toString().trim();
             p.director = txtDirector.getText().toString().trim();
             p.anio = Integer.parseInt(txtAnio.getText().toString().trim());
             p.genero = txtGenero.getText().toString().trim();
             p.duracion_minutos = Integer.parseInt(txtDuracion.getText().toString().trim());
-
-            // CONVERSIÓN A DOUBLE:
             p.calificacion = Double.parseDouble(txtCalificacion.getText().toString().trim());
 
             executor.execute(() -> {
@@ -109,7 +98,7 @@ public class PeliculasActivity extends AppCompatActivity {
 
                     runOnUiThread(() -> {
                         limpiarCampos();
-                        listarPeliculas(); // Refresca la lista
+                        listarPeliculas();
                     });
                 } catch (Exception e) {
                     mostrarMensaje("Error al crear: " + e.getMessage());
@@ -136,8 +125,6 @@ public class PeliculasActivity extends AppCompatActivity {
             p.anio = Integer.parseInt(txtAnio.getText().toString().trim());
             p.genero = txtGenero.getText().toString().trim();
             p.duracion_minutos = Integer.parseInt(txtDuracion.getText().toString().trim());
-
-            // CONVERSIÓN A DOUBLE:
             p.calificacion = Double.parseDouble(txtCalificacion.getText().toString().trim());
 
             executor.execute(() -> {
@@ -183,7 +170,6 @@ public class PeliculasActivity extends AppCompatActivity {
     }
 
     private void buscarPelicula() {
-        // Aprovechamos para ponerle .trim() aquí también por si se va un espacio en el ID
         String idStr = txtId.getText().toString().trim();
         if (idStr.isEmpty()) {
             Toast.makeText(this, "Ingresa un ID para buscar", Toast.LENGTH_SHORT).show();
@@ -216,7 +202,6 @@ public class PeliculasActivity extends AppCompatActivity {
         });
     }
 
-    // Utilidad para mostrar Toast desde un hilo secundario hacia el hilo principal (UI)
     private void mostrarMensaje(String mensaje) {
         runOnUiThread(() -> Toast.makeText(PeliculasActivity.this, mensaje, Toast.LENGTH_LONG).show());
     }

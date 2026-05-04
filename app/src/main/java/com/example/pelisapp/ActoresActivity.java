@@ -37,9 +37,8 @@ public class ActoresActivity extends AppCompatActivity {
         btnEliminarActor = findViewById(R.id.btnEliminarActor);
         btnVolverMenuActores = findViewById(R.id.btnVolverMenuActores);
 
-        // Eventos
         btnCrearActor.setOnClickListener(v -> crearActor());
-        btnListarActores.setOnClickListener(v -> listarTodosLosActores()); // Cambiado para listar TODOS
+        btnListarActores.setOnClickListener(v -> listarTodosLosActores());
         btnActualizarActor.setOnClickListener(v -> actualizarActor());
         btnEliminarActor.setOnClickListener(v -> eliminarActor());
         btnVolverMenuActores.setOnClickListener(v -> finish());
@@ -47,21 +46,17 @@ public class ActoresActivity extends AppCompatActivity {
         listarTodosLosActores();
     }
 
-    // NUEVO MÉTODO: Trae todas las películas, extrae sus actores y los muestra
     private void listarTodosLosActores() {
         lblResultadosActores.setText("Cargando catálogo completo de actores...");
 
         executor.execute(() -> {
             try {
-                // Llamamos a la nueva ruta que trae películas con actores incluidos
                 List<Pelicula> peliculas = ApiClient.getPeliculasConActores();
 
                 runOnUiThread(() -> {
                     StringBuilder sb = new StringBuilder();
 
-                    // Recorremos cada película
                     for (Pelicula p : peliculas) {
-                        // Si la película tiene actores, los listamos
                         if (p.actores != null && !p.actores.isEmpty()) {
                             sb.append("🎬 PELÍCULA: ").append(p.titulo).append(" (ID: ").append(p.id).append(")\n");
                             for (Actor a : p.actores) {
@@ -102,7 +97,7 @@ public class ActoresActivity extends AppCompatActivity {
                 mostrarMensaje("Actor creado exitosamente");
                 runOnUiThread(() -> {
                     limpiarCampos();
-                    listarTodosLosActores(); // Refrescamos la lista general
+                    listarTodosLosActores();
                 });
             } catch (Exception e) {
                 mostrarMensaje("Error: " + e.getMessage());
@@ -129,7 +124,7 @@ public class ActoresActivity extends AppCompatActivity {
                 mostrarMensaje("Actor actualizado correctamente");
                 runOnUiThread(() -> {
                     limpiarCampos();
-                    listarTodosLosActores(); // Refrescamos la lista general
+                    listarTodosLosActores();
                 });
             } catch (Exception e) {
                 mostrarMensaje("Error: " + e.getMessage());
@@ -152,7 +147,7 @@ public class ActoresActivity extends AppCompatActivity {
                 mostrarMensaje("Actor eliminado");
                 runOnUiThread(() -> {
                     limpiarCampos();
-                    listarTodosLosActores(); // Refrescamos la lista general
+                    listarTodosLosActores();
                 });
             } catch (Exception e) {
                 mostrarMensaje("Error: " + e.getMessage());
