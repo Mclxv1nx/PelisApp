@@ -114,3 +114,46 @@ Si quieres, puedo:
 
 ---
 Generado automáticamente: documentación inicial de la app basada en el código fuente presente.
+
+## MENÚ PRINCIPAL
+
+<img width="540" height="1200" alt="image" src="https://github.com/user-attachments/assets/2197f7d4-9161-41f1-ae0a-b134f746839b" />
+
+## GESTIÓN DE PELICULAS
+<img width="310" height="800" alt="image" src="https://github.com/user-attachments/assets/3cc77faa-d7f1-4632-afbd-8ba6623f44f7" />
+
+## CREACIÓN DE PELÍCULAS
+<img width="310" height="800" alt="image" src="https://github.com/user-attachments/assets/5ebe23b2-e338-4c48-bfc9-d0e769a91482" />
+
+## LISTADO DE PELICULAS
+<img width="310" height="800" alt="image" src="https://github.com/user-attachments/assets/d7f56426-1b27-4b65-915d-ca62684b924e" />
+
+## ACTUALIZACIÓN DE PELÍCULAS 
+<img width="310" height="800" alt="image" src="https://github.com/user-attachments/assets/22da972c-5a18-42b7-922b-3376f7531338" />
+<img width="318" height="121" alt="image" src="https://github.com/user-attachments/assets/bd6499eb-4193-4dc9-87d0-2d42ce07edec" />
+
+## ELIMINAR PELICULA
+<img width="310" height="800" alt="image" src="https://github.com/user-attachments/assets/553fe965-678b-432d-a9f4-391dfe210c97" />
+
+## GESTIÓN DE ACTORES Y CREACIÓND DE UN ACTOR
+<img width="520" height="562" alt="image" src="https://github.com/user-attachments/assets/0cb51f57-493a-4cba-b984-a588b33a5557" />
+
+## ASIGNACIÓN DEL ACTOR EN LA PELICULA
+<img width="461" height="147" alt="image" src="https://github.com/user-attachments/assets/29f05ac2-5655-41d1-8be9-8b711d25ded4" />
+
+## ACTUALIZACIÓN DE UN ACTOR 
+<img width="310" height="800" alt="image" src="https://github.com/user-attachments/assets/a81cb599-e938-4fbe-861c-8dcaf36cc0ba" />
+
+## ELIMINAR ACTOR
+
+## ANTES
+<img width="310" height="800" alt="image" src="https://github.com/user-attachments/assets/fb8a736c-9582-4a80-a933-3a4723c5749f" />
+
+## DESPUÉS
+<img width="310" height="800" alt="image" src="https://github.com/user-attachments/assets/e7d84bc8-8f6b-4199-b866-3152ca75ee42" />
+
+
+
+
+
+
